@@ -1,4 +1,3 @@
-// Source: https://github.com/udacity/reactnd-redux-todos-goals/blob/1177c07de724399ba9f8b1573c4c9711caa23daa/src/index.js Accessed: 1/22/22
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
