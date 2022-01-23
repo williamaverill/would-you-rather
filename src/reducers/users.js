@@ -10,6 +10,7 @@ import {
   CREATE_USER,
   CHANGE_AVATAR,
   GET_SCORE,
+  GET_AUTHENTICATED,
 } from "../actions/users";
 
 export default function users(state = [], action) {
@@ -31,9 +32,11 @@ export default function users(state = [], action) {
           : Object.assign({}, user, { authenticated: true })
       );
     case LOG_OUT:
-      return (state.filter(
-        (user) => user.id === action.id
-      )[0].authenticated = false);
+      return state.map((user) =>
+        user.id !== action.id
+          ? user
+          : Object.assign({}, user, { authenticated: false })
+      );
     case CREATE_USER:
       return state.concat([action.user]);
     case CHANGE_AVATAR:

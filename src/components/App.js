@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 
 import ConnectedLogIn from "./LogIn";
-import Home from "./Home";
+import ConnectedHome from "./Home";
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,8 +23,8 @@ class App extends React.Component {
         }}
       >
         <Routes>
-          <Route path="/login" element={<ConnectedLogIn />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<ConnectedLogIn />} />
+          <Route path="/home" element={<ConnectedHome />} />
         </Routes>
       </div>
     );

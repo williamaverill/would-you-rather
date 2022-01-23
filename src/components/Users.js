@@ -22,7 +22,7 @@ class Users extends React.Component {
   };
 
   handleClick = () => {
-    if (Object.keys(this.state.user) > 0) {
+    if (Object.keys(this.state.user).length > 0) {
       this.props.dispatch(handleLogIn(this.state.user.value));
     }
   };
@@ -45,7 +45,7 @@ class Users extends React.Component {
             console.log(userName);
           }}
         />
-        <Link to="/">
+        <Link to="/home">
           <Button
             style={{ width: "222px" }}
             variant="outline-warning"
