@@ -4,10 +4,13 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 
 class App extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(handleInitialData());
+  }
 
   render() {
-    return <div></div>;
+    return <div>Hello, world!</div>;
   }
 }
 

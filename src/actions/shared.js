@@ -1,4 +1,9 @@
-import API from "../../_DATA";
+import {
+  _getUsers,
+  _getQuestions,
+  _saveQuestion,
+  _saveQuestionAnswer,
+} from "../_DATA";
 
 export const RECEIVE_DATA = "RECEIVE_DATA";
 export const CREATE_QUESTION = "CREATE_QUESTION";
@@ -30,7 +35,7 @@ function answerQuestion({ authedUser, qid, answer }) {
 
 export function handleInitialData() {
   return (dispatch) => {
-    return Promise.all([API._getUsers(), API._getQuestions()]).then(
+    return Promise.all([_getUsers(), _getQuestions()]).then(
       ([users, questions]) => {
         dispatch(receiveData(users, questions));
       }
@@ -40,7 +45,7 @@ export function handleInitialData() {
 
 export function handleCreateQuestion(question, cb) {
   return (dispatch) => {
-    return API._saveQuestion(question)
+    return _saveQuestion(question)
       .then((formattedQuestion) => {
         dispatch(createQuestion(formattedQuestion));
         cb();
@@ -53,7 +58,7 @@ export function handleCreateQuestion(question, cb) {
 
 export function handleAnswerQuestion({ authedUser, qid, answer }, cb) {
   return (dispatch) => {
-    return API._saveQuestionAnswer({ authedUser, qid, answer })
+    return _saveQuestionAnswer({ authedUser, qid, answer })
       .then(() => {
         dispatch(answerQuestion({ authedUser, qid, answer }));
         cb();
