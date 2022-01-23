@@ -25,9 +25,11 @@ export default function users(state = [], action) {
         .filter((user) => user.id === action.authedUser)[0]
         .answers.concat([{ [qid]: answer }]);
     case LOG_IN:
-      return (state.filter(
-        (user) => user.id === action.id
-      )[0].authenticated = true);
+      return state.map((user) =>
+        user.id !== action.id
+          ? user
+          : Object.assign({}, user, { authenticated: true })
+      );
     case LOG_OUT:
       return (state.filter(
         (user) => user.id === action.id

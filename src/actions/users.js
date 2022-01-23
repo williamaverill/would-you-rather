@@ -40,11 +40,9 @@ function getScore(id) {
   };
 }
 
-export function handleLogIn(id) {
-  return (dispatch) => {
-    dispatch(logIn(id));
-  };
-}
+export const handleLogIn = (id) => (dispatch) => {
+  dispatch(logIn(id));
+};
 
 export function handleLogOut(id) {
   return (dispatch) => {
