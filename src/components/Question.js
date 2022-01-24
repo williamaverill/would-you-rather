@@ -63,6 +63,7 @@ class Question extends React.Component {
                 <Card.Title>Would you rather?</Card.Title>
                 <Card.Text></Card.Text>
                 <img
+                  alt="avatar"
                   src={
                     this.props.users.find(
                       (user) =>
@@ -111,6 +112,7 @@ class Question extends React.Component {
                 <Card.Title>Would you rather?</Card.Title>
                 <Card.Text></Card.Text>
                 <img
+                  alt="avatar"
                   src={
                     this.props.users.find(
                       (user) =>
