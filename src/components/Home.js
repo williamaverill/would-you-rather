@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { Card } from "react-bootstrap";
 
 import { handleLogOut } from "../actions/users";
 
@@ -99,13 +100,23 @@ class Home extends React.Component {
                 ) {
                   return (
                     <div key={question.id}>
-                      <h1>Would you rather?</h1>
-                      <h2>
-                        By&nbsp;{question.author}&nbsp;on&nbsp;
-                        {new Date(question.timestamp).toString()}
-                      </h2>
-                      <p>A)&nbsp;{question.optionOne.text}</p>
-                      <p>B)&nbsp;{question.optionTwo.text}</p>
+                      <Card>
+                        <Card.Body>
+                          <Card.Title>Would you rather?</Card.Title>
+                          <Card.Subtitle>
+                            By&nbsp;{question.author}&nbsp;on&nbsp;
+                            {new Date(question.timestamp).toString()}
+                          </Card.Subtitle>
+                          <Card.Text></Card.Text>
+                          <Card.Text>
+                            A)&nbsp;{question.optionOne.text}
+                          </Card.Text>
+                          <Card.Text>
+                            B)&nbsp;{question.optionTwo.text}
+                          </Card.Text>
+                          <Card.Link href="#">View Details</Card.Link>
+                        </Card.Body>
+                      </Card>
                     </div>
                   );
                 }
@@ -129,13 +140,23 @@ class Home extends React.Component {
                 ) {
                   return (
                     <div key={question.id}>
-                      <h1>Would you rather?</h1>
-                      <h2>
-                        By&nbsp;{question.author}&nbsp;on&nbsp;
-                        {new Date(question.timestamp).toString()}
-                      </h2>
-                      <p>A)&nbsp;{question.optionOne.text}</p>
-                      <p>B)&nbsp;{question.optionTwo.text}</p>
+                      <Card>
+                        <Card.Body>
+                          <Card.Title>Would you rather?</Card.Title>
+                          <Card.Subtitle>
+                            By&nbsp;{question.author}&nbsp;on&nbsp;
+                            {new Date(question.timestamp).toString()}
+                          </Card.Subtitle>
+                          <Card.Text></Card.Text>
+                          <Card.Text>
+                            A)&nbsp;{question.optionOne.text}
+                          </Card.Text>
+                          <Card.Text>
+                            B)&nbsp;{question.optionTwo.text}
+                          </Card.Text>
+                          <Card.Link href="#">View Details</Card.Link>
+                        </Card.Body>
+                      </Card>
                     </div>
                   );
                 }
