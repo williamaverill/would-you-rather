@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link, useNavigate } from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
 
 import { handleLogOut } from "../actions/users";
 
@@ -13,6 +15,7 @@ const WrappedHome = (props) => {
     <Home
       navigation={navigation}
       users={props.users}
+      questions={props.questions}
       dispatch={props.dispatch}
     />
   );
@@ -30,6 +33,16 @@ class Home extends React.Component {
     if (Object.keys(this.state.user).length > 0) {
       this.props.dispatch(handleLogOut(this.state.user.id));
     }
+  };
+
+  compare = (a, b) => {
+    if (a.timestamp < b.timestamp) {
+      return 1;
+    }
+    if (a.timestamp > b.timestamp) {
+      return -1;
+    }
+    return 0;
   };
 
   componentDidMount() {
@@ -51,16 +64,106 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <Link to="/">
-          <Button
-            style={{ width: "222px" }}
-            variant="outline-warning"
-            onClick={this.handleClick}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <h1>Welcome,&nbsp;{this.state.user.name}</h1>
+        <Tabs>
+          <TabList>
+            <Tab>Unanswered Polls</Tab>
+            <Tab>Answered Polls</Tab>
+            <Tab>Leaderboard</Tab>
+            <Tab>Create A New Poll</Tab>
+            <Tab>Log Out</Tab>
+          </TabList>
+          <TabPanel
+            style={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
           >
-            Log Out
-          </Button>
-        </Link>
+            <ul>
+              {this.props.questions.sort(this.compare).map((question) => {
+                if (
+                  !question.optionOne.votes.includes(this.state.user.id) &&
+                  !question.optionTwo.votes.includes(this.state.user.id)
+                ) {
+                  return (
+                    <div key={question.id}>
+                      <h1>Would you rather?</h1>
+                      <h2>
+                        By&nbsp;{question.author}&nbsp;on&nbsp;
+                        {new Date(question.timestamp).toString()}
+                      </h2>
+                      <p>A)&nbsp;{question.optionOne.text}</p>
+                      <p>B)&nbsp;{question.optionTwo.text}</p>
+                    </div>
+                  );
+                }
+              })}
+            </ul>
+          </TabPanel>
+          <TabPanel
+            style={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <ul>
+              {this.props.questions.sort(this.compare).map((question) => {
+                if (
+                  question.optionOne.votes.includes(this.state.user.id) ||
+                  question.optionTwo.votes.includes(this.state.user.id)
+                ) {
+                  return (
+                    <div key={question.id}>
+                      <h1>Would you rather?</h1>
+                      <h2>
+                        By&nbsp;{question.author}&nbsp;on&nbsp;
+                        {new Date(question.timestamp).toString()}
+                      </h2>
+                      <p>A)&nbsp;{question.optionOne.text}</p>
+                      <p>B)&nbsp;{question.optionTwo.text}</p>
+                    </div>
+                  );
+                }
+              })}
+            </ul>
+          </TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel></TabPanel>
+          <TabPanel
+            style={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/">
+              <Button
+                style={{ width: "222px" }}
+                variant="outline-warning"
+                onClick={this.handleClick}
+              >
+                Log Out
+              </Button>
+            </Link>
+          </TabPanel>
+        </Tabs>
       </div>
     );
   }
@@ -68,4 +171,5 @@ class Home extends React.Component {
 
 export default connect((state) => ({
   users: state.users,
+  questions: state.questions,
 }))(WrappedHome);

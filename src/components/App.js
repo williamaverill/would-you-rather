@@ -15,13 +15,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <div style={{ display: "flex", flex: 1 }}>
         <Routes>
           <Route path="/" element={<ConnectedLogIn />} />
           <Route path="/home" element={<ConnectedHome />} />
