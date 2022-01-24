@@ -114,7 +114,9 @@ class Home extends React.Component {
                           <Card.Text>
                             B)&nbsp;{question.optionTwo.text}
                           </Card.Text>
-                          <Card.Link href="#">View Details</Card.Link>
+                          <Link to={"questions/:" + question.id}>
+                            <Card.Link href="#">View Details</Card.Link>
+                          </Link>
                         </Card.Body>
                       </Card>
                     </div>
@@ -154,7 +156,9 @@ class Home extends React.Component {
                           <Card.Text>
                             B)&nbsp;{question.optionTwo.text}
                           </Card.Text>
-                          <Card.Link href="#">View Details</Card.Link>
+                          <Link to={"questions/:" + question.id}>
+                            <Card.Link href="#">View Details</Card.Link>
+                          </Link>
                         </Card.Body>
                       </Card>
                     </div>

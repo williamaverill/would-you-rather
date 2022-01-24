@@ -3,7 +3,7 @@ let users = [
     id: "sarahedo",
     name: "Sarah Edo",
     avatarURL:
-      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn1.vectorstock.com%2Fi%2Fthumb-large%2F71%2F05%2Fcyber-gamer-girl-esport-logo-mascot-design-vector-35337105.jpg&imgrefurl=https%3A%2F%2Fwww.vectorstock.com%2Froyalty-free-vectors%2Fgirl-gamer-logo-vectors&tbnid=Q1ww73c1JLEhNM&vet=12ahUKEwijkP_f_Mb1AhWIBDQIHVSxDfkQMyhVegUIARCYAQ..i&docid=obVko_mF6xbWhM&w=238&h=250&q=girl%20game%20logo%20avatar&hl=en&ved=2ahUKEwijkP_f_Mb1AhWIBDQIHVSxDfkQMyhVegUIARCYAQ",
+      "https://avatars.dicebear.com/v2/female/08a5fc6f136ccc9d2705826e620c73e9.svg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
       "6ni6ok3ym7mf1p33lnez": "optionTwo",
@@ -16,7 +16,7 @@ let users = [
     id: "tylermcginnis",
     name: "Tyler McGinnis",
     avatarURL:
-      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.ytimg.com%2Fan%2FeX_L39UvZes%2F98699c08-8f5a-4e38-b296-69ce5589294a_mq.jpg%3Fv%3D5d3f36ee&imgrefurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DeX_L39UvZes&tbnid=yzRTD0tnU36BIM&vet=12ahUKEwj1l--S-8b1AhWUJjQIHVMDDiYQMygCegQIARAm..i&docid=Li5Bp-o3wz9HgM&w=300&h=300&itg=1&q=tyler%20mcginnis&ved=2ahUKEwj1l--S-8b1AhWUJjQIHVMDDiYQMygCegQIARAm",
+      "https://avatars.dicebear.com/v2/male/08a5fc6f136ccc9d2705826e620c73e9.svg",
     answers: {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo",
@@ -27,7 +27,7 @@ let users = [
     id: "johndoe",
     name: "John Doe",
     avatarURL:
-      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F2d%2F0f%2F50%2F2d0f50e8e4f6b233c7cf70b4bd36f89c.png&imgrefurl=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F352477108322644529%2F&tbnid=xcgBehBT0MEFIM&vet=12ahUKEwim8NmH_Mb1AhWKATQIHRRACHYQMygBegUIARC5AQ..i&docid=2mftk_WuKQvqUM&w=800&h=600&itg=1&q=game%20logo%20avatar&hl=en&ved=2ahUKEwim8NmH_Mb1AhWKATQIHRRACHYQMygBegUIARC5AQ",
+      "https://avatars.dicebear.com/v2/gridy/08a5fc6f136ccc9d2705826e620c73e9.svg",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
