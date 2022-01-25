@@ -21,9 +21,15 @@ export default function users(state = [], action) {
     case ANSWER_QUESTION:
       const qid = action.qid;
       const answer = action.answer;
-      return state
-        .filter((user) => user.id === action.authedUser)[0]
-        .answers.concat([{ [qid]: answer }]);
+      return state.map((user) => {
+        if (user.id !== action.authedUser.id) {
+          return user;
+        } else {
+          return Object.assign({}, user, {
+            answers: { ...user.answers, [action.qid]: action.answer },
+          });
+        }
+      });
     case LOG_IN:
       return state.map((user) =>
         user.id !== action.id

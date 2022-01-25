@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
+import { handleAnswerQuestion } from "../actions/shared";
+
 const WrappedQuestion = (props) => {
   const navigation = useNavigate();
   const { id } = useParams();
@@ -26,6 +28,26 @@ class Question extends React.Component {
       user: {},
     };
   }
+
+  handleClickOptionOne = () => {
+    this.props.dispatch(
+      handleAnswerQuestion(
+        this.state.user,
+        this.props.id.substring(1),
+        "optionOne"
+      )
+    );
+  };
+
+  handleClickOptionTwo = () => {
+    this.props.dispatch(
+      handleAnswerQuestion(
+        this.state.user,
+        this.props.id.substring(1),
+        "optionTwo"
+      )
+    );
+  };
 
   componentDidMount() {
     console.log(this.props.id);
@@ -76,7 +98,7 @@ class Question extends React.Component {
                   }
                 />
                 <Card.Text></Card.Text>
-                <Card.Text>
+                <Card.Text onClick={this.handleClickOptionOne}>
                   A)&nbsp;
                   {
                     this.props.questions.find(
@@ -84,7 +106,7 @@ class Question extends React.Component {
                     ).optionOne.text
                   }
                 </Card.Text>
-                <Card.Text>
+                <Card.Text onClick={this.handleClickOptionTwo}>
                   B)&nbsp;
                   {
                     this.props.questions.find(

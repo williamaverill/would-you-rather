@@ -9,9 +9,18 @@ export default function questions(state = [], action) {
     case CREATE_QUESTION:
       return state.concat([action.question]);
     case ANSWER_QUESTION:
-      return state
-        .filter((question) => question.id === action.qid)[0]
-        [action.answer].votes.concat([action.authedUser]);
+      return state.map((question) => {
+        if (question.id !== action.qid) {
+          return question;
+        } else {
+          return Object.assign({}, question, {
+            [action.answer]: {
+              votes: question[action.answer].votes.concat(action.authedUser.id),
+              text: question[action.answer].text,
+            },
+          });
+        }
+      });
     case RECEIVE_DATA:
       return action.questions;
     default:

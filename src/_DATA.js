@@ -175,30 +175,29 @@ export function _saveQuestion(question) {
   });
 }
 
-export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer(authedUser, qid, answer) {
   return new Promise((res, rej) => {
+    console.log(authedUser.id);
     setTimeout(() => {
-      users = {
+      users = [
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          answers: {
-            ...users[authedUser].answers,
-            [qid]: answer,
-          },
-        },
-      };
+        users.map((user) => {
+          if (user.id !== authedUser.id) {
+            return user;
+          } else {
+            return Object.assign({}, user, {
+              answers: { ...user.answers, [qid]: answer },
+            });
+          }
+        }),
+      ];
 
-      questions = {
+      questions = [
         ...questions,
-        [qid]: {
-          ...questions[qid],
-          [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser]),
-          },
-        },
-      };
+        questions
+          .filter((question) => question.id === qid)[0]
+          [answer].votes.concat(authedUser.id),
+      ];
 
       res();
     }, 500);

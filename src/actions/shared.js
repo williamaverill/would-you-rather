@@ -24,7 +24,7 @@ function createQuestion(question) {
   };
 }
 
-function answerQuestion({ authedUser, qid, answer }) {
+function answerQuestion(authedUser, qid, answer) {
   return {
     type: ANSWER_QUESTION,
     authedUser,
@@ -51,12 +51,11 @@ export function handleCreateQuestion(question) {
   };
 }
 
-export function handleAnswerQuestion({ authedUser, qid, answer }, cb) {
+export function handleAnswerQuestion(authedUser, qid, answer) {
   return (dispatch) => {
-    return _saveQuestionAnswer({ authedUser, qid, answer })
+    return _saveQuestionAnswer(authedUser, qid, answer)
       .then(() => {
-        dispatch(answerQuestion({ authedUser, qid, answer }));
-        cb();
+        dispatch(answerQuestion(authedUser, qid, answer));
       })
       .catch(() => {
         alert("There was an error. Try again.");
