@@ -75,6 +75,15 @@ class Home extends React.Component {
         }}
       >
         <h1>Welcome,&nbsp;{this.state.user.name}</h1>
+        <Link to="/">
+          <Button
+            style={{ width: "222px" }}
+            variant="outline-warning"
+            onClick={this.handleClick}
+          >
+            Log Out
+          </Button>
+        </Link>
         <Tabs>
           <TabList>
             <Tab>Unanswered Polls</Tab>
@@ -85,7 +94,6 @@ class Home extends React.Component {
             <Link to={"/add"}>
               <Tab>Create A New Poll</Tab>
             </Link>
-            <Tab>Log Out</Tab>
           </TabList>
           <TabPanel
             style={{
@@ -173,25 +181,6 @@ class Home extends React.Component {
           </TabPanel>
           <TabPanel></TabPanel>
           <TabPanel></TabPanel>
-          <TabPanel
-            style={{
-              display: "flex",
-              flex: 1,
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Link to="/">
-              <Button
-                style={{ width: "222px" }}
-                variant="outline-warning"
-                onClick={this.handleClick}
-              >
-                Log Out
-              </Button>
-            </Link>
-          </TabPanel>
         </Tabs>
       </div>
     );
