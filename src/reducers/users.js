@@ -9,9 +9,15 @@ import { LOG_IN, LOG_OUT } from "../actions/users";
 export default function users(state = [], action) {
   switch (action.type) {
     case CREATE_QUESTION:
-      return state
-        .filter((user) => user.id === action.author)[0]
-        .questions.concat([action.id]);
+      return state.map((user) => {
+        if (user.id !== action.question.author) {
+          return user;
+        } else {
+          return Object.assign({}, user, {
+            questions: user.questions.concat([action.question.id]),
+          });
+        }
+      });
     case ANSWER_QUESTION:
       const qid = action.qid;
       const answer = action.answer;

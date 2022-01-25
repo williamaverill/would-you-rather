@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import { useNavigate } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
 const WrappedLeaderboard = (props) => {

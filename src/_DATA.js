@@ -118,7 +118,7 @@ let questions = [
   },
 ];
 
-function generateUID() {
+export function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
@@ -137,18 +137,18 @@ export function _getQuestions() {
   });
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+function formatQuestion(question) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author: question.author,
     optionOne: {
       votes: [],
-      text: optionOneText,
+      text: question.optionOne.text,
     },
     optionTwo: {
       votes: [],
-      text: optionTwoText,
+      text: question.optionTwo.text,
     },
   };
 }
@@ -159,18 +159,16 @@ export function _saveQuestion(question) {
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
-      questions = {
-        ...questions,
-        [formattedQuestion.id]: formattedQuestion,
-      };
+      questions = [...questions, formattedQuestion];
 
-      users = {
+      console.log(users.filter((user) => user.id == authedUser));
+
+      users = [
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id]),
-        },
-      };
+        users
+          .filter((user) => user.id === authedUser)[0]
+          .questions.concat([formattedQuestion.id]),
+      ];
 
       res(formattedQuestion);
     }, 1000);

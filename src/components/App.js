@@ -7,6 +7,7 @@ import { handleInitialData } from "../actions/shared";
 import ConnectedLogIn from "./LogIn";
 import ConnectedHome from "./Home";
 import ConnectedQuestion from "./Question";
+import ConnectedAdd from "./Add";
 import ConnectedLeaderboard from "./Leaderboard";
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
           <Route path="/" element={<ConnectedLogIn />} />
           <Route path="/home" element={<ConnectedHome />} />
           <Route path="/questions/:id" element={<ConnectedQuestion />} />
+          <Route path="/add" element={<ConnectedAdd />} />
           <Route path="/leaderboard" element={<ConnectedLeaderboard />} />
         </Routes>
       </div>

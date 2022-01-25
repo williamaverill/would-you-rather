@@ -43,16 +43,11 @@ export function handleInitialData() {
   };
 }
 
-export function handleCreateQuestion(question, cb) {
+export function handleCreateQuestion(question) {
   return (dispatch) => {
-    return _saveQuestion(question)
-      .then((formattedQuestion) => {
-        dispatch(createQuestion(formattedQuestion));
-        cb();
-      })
-      .catch(() => {
-        alert("There was an error. Try again.");
-      });
+    return _saveQuestion(question).then((formattedQuestion) => {
+      dispatch(createQuestion(formattedQuestion));
+    });
   };
 }
 

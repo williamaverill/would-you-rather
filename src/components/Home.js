@@ -82,7 +82,9 @@ class Home extends React.Component {
             <Link to={"/leaderboard"}>
               <Tab>Leaderboard</Tab>
             </Link>
-            <Tab>Create A New Poll</Tab>
+            <Link to={"/add"}>
+              <Tab>Create A New Poll</Tab>
+            </Link>
             <Tab>Log Out</Tab>
           </TabList>
           <TabPanel
