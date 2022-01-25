@@ -4,14 +4,7 @@ import {
   ANSWER_QUESTION,
 } from "../actions/shared";
 
-import {
-  LOG_IN,
-  LOG_OUT,
-  CREATE_USER,
-  CHANGE_AVATAR,
-  GET_SCORE,
-  GET_AUTHENTICATED,
-} from "../actions/users";
+import { LOG_IN, LOG_OUT } from "../actions/users";
 
 export default function users(state = [], action) {
   switch (action.type) {
@@ -36,16 +29,6 @@ export default function users(state = [], action) {
         user.id !== action.id
           ? user
           : Object.assign({}, user, { authenticated: false })
-      );
-    case CREATE_USER:
-      return state.concat([action.user]);
-    case CHANGE_AVATAR:
-      return (state.filter((user) => user.id === action.id)[0].avatarURL =
-        action.avatarURL);
-    case GET_SCORE:
-      return (
-        state.filter((user) => user.id === action.id)[0].questions.length +
-        state.filter((user) => user.id === action.id)[0].answers.length
       );
     case RECEIVE_DATA:
       return action.users;
