@@ -79,7 +79,9 @@ class Home extends React.Component {
           <TabList>
             <Tab>Unanswered Polls</Tab>
             <Tab>Answered Polls</Tab>
-            <Tab>Leaderboard</Tab>
+            <Link to={"/leaderboard"}>
+              <Tab>Leaderboard</Tab>
+            </Link>
             <Tab>Create A New Poll</Tab>
             <Tab>Log Out</Tab>
           </TabList>
@@ -114,7 +116,7 @@ class Home extends React.Component {
                           <Card.Text>
                             B)&nbsp;{question.optionTwo.text}
                           </Card.Text>
-                          <Link to={"questions/:" + question.id}>
+                          <Link to={"/questions/:" + question.id}>
                             <Card.Link href="#">View Details</Card.Link>
                           </Link>
                         </Card.Body>
@@ -156,7 +158,7 @@ class Home extends React.Component {
                           <Card.Text>
                             B)&nbsp;{question.optionTwo.text}
                           </Card.Text>
-                          <Link to={"questions/:" + question.id}>
+                          <Link to={"/questions/:" + question.id}>
                             <Card.Link href="#">View Details</Card.Link>
                           </Link>
                         </Card.Body>
